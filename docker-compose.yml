@@ -1,0 +1,12 @@
+version: "3.9"
+services:
+  app:
+    build: .
+    container_name: products-frontend
+    volumes:
+      - ./app:/var/www/html/app
+      - ./config/prod/virtualhosts/productsmmira.chickenkiller.com:/etc/nginx/sites-enabled/productsmmira.chickenkiller.com
+      - ./config/prod/virtualhosts/urls.js:/var/www/html/app/public_html/config/urls.js
+    ports:
+      - "80:80"
+    restart: always
